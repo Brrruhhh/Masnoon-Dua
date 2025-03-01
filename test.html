@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUA CARDS</title>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .book {
+            position: relative;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: rgb(200, 80, 192);
+            box-shadow: 1px 1px 12px rgb(255, 194, 26);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            transition: transform 0.5s;
+        }
+        
+        .cover {
+            top: 0;
+            position: absolute;
+            background: linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.5s;
+            transform-origin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .book:hover .cover {
+            transform: rotateY(-80deg);
+        }
+        
+        p {
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        
+        #lower_parts {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        
+        #lower_parts > div {
+            flex: 1 1 calc(33.33% - 15px);
+            max-width: calc(33.33% - 15px);
+            min-width: 300px;
+            text-align: center;
+            padding: 35px;
+            background-color: #3498db;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(86, 233, 138, 0.926);
+        }
+
+        /* Scroll to top button */
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
+            border: 2px;
+            padding: 12px 18px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 2px 2px 10px rgba(253, 194, 33, 0.9);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            z-index: 1000;
+        }
+
+        #scrollToTop:hover {
+            background: linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
+            transform: scale(1.1);
+            box-shadow: 4px 4px 15px rgba(253, 194, 33, 0.9);
+        }
+
+        /* Fade-in effect when visible */
+        #scrollToTop.show {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Tablet View */
+        @media (max-width: 1024px) {
+            #lower_parts > div {
+                flex: 1 1 calc(50% - 15px);
+                max-width: calc(50% - 15px);
+            }
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            #lower_parts {
+                flex-direction: column;
+            }
+            #lower_parts > div {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
+            text-align: center;
+            padding: 40px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 210px;
+            height: 254px;
+            border-radius: 7px;
+            background: #212121;
+            display: flex;
+            gap: 5px;
+            padding: .4em;
+        }
+
+        .card p {
+            height: 100%;
+            flex: 1;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all .5s;
+            background: #212121;
+            border: 1px solid #ff5a91;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card p span {
+            min-width: 14em;
+            padding: .5em;
+            text-align: center;
+            transform: rotate(-90deg);
+            transition: all .5s;
+            text-transform: uppercase;
+            color: #ff568e;
+            letter-spacing: .1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card p:hover {
+            flex: 4;
+        }
+
+        .card p:hover span {
+            transform: rotate(0);
+        }
+    </style>
+
+
+    <style>
+        input:hover, textarea:hover {
+            background-color: #2d3748; /* Slightly lighter gray for hover */
+            border-color: #4fd1c5; /* Cyan border */
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        button:enabled:hover {
+            background-color: #ffae00; /* Brighter blue */
+            transition: background-color 0.3s;
+        }
+
+
+        /* below is placed the submit button styling. */
+
+        .cta {
+            position: relative;
+            margin: auto;
+            padding: 12px 24px; /* Increased padding for consistent size */
+            transition: all 0.2s ease;
+            border: 3px solid #847e8f;
+            border-radius: 50px;
+            background: #444346;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px; /* Add spacing between text and SVG */
+            overflow: hidden; /* Prevent pseudo-element overflow */
+            min-width: 160px; /* Ensures a consistent width */
+            height: 50px; /* Fixes button height */
+            box-sizing: border-box; /* Includes padding and border in size */
+        }
+
+        .cta:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0; /* Ensure it starts at the left for consistent animation */
+            border-radius: 50px;
+            background: white;
+            width: 0%; /* Start small for hover animation */
+            height: 100%; /* Matches button height */
+            transition: all 0.8s ease;
+            z-index: 1; /* Places it behind text and icon */
+        }
+
+        .cta span {
+            position: relative;
+            font-family: Montserrat, sans-serif;
+            font-size: 18px;
+            color: white;
+            font-weight: 500; /* Slightly bolder text for better visibility */
+            letter-spacing: 0.05em;
+            z-index: 2; /* Ensures text stays above the :before element */
+        }
+
+        .cta svg {
+            position: relative;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke: white;
+            stroke-width: 2;
+            transform: translateX(-5px);
+            transition: transform 0.5s ease;
+            z-index: 2; /* Keeps SVG above the :before element */
+        }
+
+        .cta:hover:before {
+            width: 100%; /* Expands to cover the button on hover */
+            background: #1c1c1c; /* Darker background on hover */
+        }
+
+        .cta:hover svg {
+            transform: translateX(0); /* Moves SVG into place */
+        }
+
+        .cta:active {
+            transform: scale(0.95); /* Shrinks slightly on click */
+            transition: transform 0.2s ease;
+        }
+    </style>
+
+
+</head>
+<body>
+    
+    
+    <div id="lower_parts">
+        
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+        <div class="book">
+            <p>Hello</p>
+            <div class="cover">
+                <p>Hover Me</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- footer prtion -->
+     <footer>
+        <div class="container">
+            <p>This is a footer</p>
+            <hr/>
+            <br>
+            <button type="submit" id="submit-button" class="cta">
+                <span>Submit</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+        <div class="container">
+            <div class="card">
+                <p><span>HOVER ME</span></p>
+                <p><span>HOVER ME</span></p>
+                <p><span>HOVER ME</span></p>
+            </div>
+        </div>
+    </footer>
+    
+    <button id="scrollToTop" onclick="scrollToTop()">↑ Top</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let scrollToTopBtn = document.getElementById("scrollToTop");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 100) {
+                    scrollToTopBtn.classList.add("show");
+                } else {
+                    scrollToTopBtn.classList.remove("show");
+                }
+            });
+
+            scrollToTopBtn.addEventListener("click", function() {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        });
+
+    </script>
+
+</body>
+</html>
